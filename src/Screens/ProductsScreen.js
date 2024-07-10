@@ -1,11 +1,9 @@
 import React from 'react'
-import data from '../data'
-import { Link } from 'react-router-dom'
-
+import '../App.css';
 
 const ProductsScreen = () => {
   return (
-    <div>
+    <div className=''>
       product
     </div>
   )

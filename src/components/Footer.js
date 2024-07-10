@@ -1,12 +1,15 @@
 import React from 'react'
+import '../App.css';
 
 
 const  Footer= () => {
   return (
-    <div className="footer">
-       all right reserved
-    </div>
-  )
+    <footer className='footer'>
+      all right reserved
+   
+
+    </footer>  
+    )
 }
 
 export default Footer

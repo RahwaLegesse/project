@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link } from 'react-router-dom';
+import '../App.css';
 
 const openMenu = ()=>{
     document.querySelector(".sidebar").classList.add("open");
@@ -51,19 +52,6 @@ const  Header= () => {
          </aside>
          
          
-         <main className="main">
-             <div className="content">
-             
-             
-           
-            
-            
-     
-                 
-             </div>
-             
-             
-         </main>
          
      </div>
     </div>
