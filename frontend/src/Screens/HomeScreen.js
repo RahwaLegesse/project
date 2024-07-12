@@ -102,21 +102,39 @@ const HomeScreen = () => {
 
 export default HomeScreen;*/
 import React from 'react'
-import data from '../data'
+
 import {Link } from 'react-router-dom';
 import ProductsScreen from './ProductsScreen';
 import '../App.css';
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import data from '../data';
 
 
 const HomeScreen = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/product");
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+    
+  }, [])
+
   return (
     
     
     <ul className="products">
 
     {
-    data.products.map(product=>
-    <li>
+    products.map(product=>
+    <li key={product._id}>
     <div className="product">
     <Link to={'http://localhost:3000/product/'+ product._id}> 
         <img className="product-image"src={product.Image} alt="image dress" />
