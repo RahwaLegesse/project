@@ -2,8 +2,9 @@ const express = require("express")
 const data = require("./data")
 const app = express()
 
-app.get("/product", (req, res)=>{
+app.get("/", (req, res)=>{
     res.send(data.products)
+    console.log("Hi rahwa")
     
 })
 app.listen(5000, ()=>{

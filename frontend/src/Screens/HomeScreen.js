@@ -117,23 +117,24 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/product");
+        const response = await axios.get("/");
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
+    console.log(data.products)
+
     
-  }, [])
+  })
 
   return (
-    
     
     <ul className="products">
 
     {
-    products.map(product=>
+      data.products.map(product=>
     <li key={product._id}>
     <div className="product">
     <Link to={'http://localhost:3000/product/'+ product._id}> 
