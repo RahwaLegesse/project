@@ -11,7 +11,8 @@ module.exports={
             Image:'images/images2.jpeg',
             image:'images/image.png',
             price:'60',
-            rating:'5 star review'
+            rating:'5 star review',
+            countInStock:'6'
 
     },
     {
@@ -21,7 +22,8 @@ module.exports={
         catagory:'trouser',
         Image:'images/images2.jpeg',
         price:'80',
-        rating:'5 star review'
+        rating:'5 star review',
+        countInStock:'6'
 
     },
     {
@@ -31,7 +33,8 @@ module.exports={
     catagory:'t-shirt',
     Image:'images/images2.jpeg',
     price:'90',
-    rating:'5 star review'
+    rating:'5 star review',
+    countInStock:'6'
     },
     {
         _id:'4',

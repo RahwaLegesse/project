@@ -109,13 +109,21 @@ import '../App.css';
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import data from '../data';
+import {useSelector, useDispatch} from 'react-redux'
+import listProducts from '../actions/productAction';
 
 
 const HomeScreen = () => {
   const [products, setProducts] = useState([]);
+  const productList = useSelector(state=>state.productList)
+  const { loading, error} = productList
+  products = productList
+  const dispatch = useDispatch()
+ 
 
   useEffect(() => {
-    const fetchData = async () => {
+    dispatch(listProducts())
+    /*const fetchData = async () => {
       try {
         const response = await axios.get("/");
         setProducts(response.data);
@@ -123,7 +131,7 @@ const HomeScreen = () => {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData();
+    fetchData();*/
     console.log(data.products)
 
     

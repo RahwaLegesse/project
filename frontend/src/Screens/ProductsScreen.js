@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../App.css';
 import { Link, useParams } from 'react-router-dom';
 import data from '../data';
+import { useDispatch, useSelector } from 'react-redux';
 
+import detailsProduct from'../actions/productAction'
 
 const ProductsScreen = () => {
-  const params=useParams()
+const [qty, setQty]= useState(1)
+  
 
-  console.log(params.id)
-  const product = data.products.find(x=>x._id === params.id)
+  const productDetails = useSelector(state =>state.productDetails)
+  const{ product, loading, error} = productDetails
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(detailsProduct()); 
+  }, []); 
+
+  
   
   
   return (
@@ -16,6 +26,9 @@ const ProductsScreen = () => {
     <div>
       <Link to="/">back to result</Link>
       </div>
+      {loading?<div>loading...</div>:
+      error? <div>{error}</div>:
+      
       <div className='details'>
         <div className='details_image'>
           <Link to={product.Image}>
@@ -57,11 +70,12 @@ const ProductsScreen = () => {
                 Status:{product.status}
               </li>
               <li>
-               Qty:<select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+               Qty:<select value={qty} onChange={(e)=> {setQty(e.target.value)}}>
+                {[...Array (product.countInStock).keys()].map(x=>
+                  <option key= {x + 1}
+                  value={x + 1}>{x + 1} </option>
+                )}
+                
                </select>
               </li>
               <li>
@@ -74,9 +88,12 @@ const ProductsScreen = () => {
         </div>
 
       </div>
+}
       </>
     
   )
 }
+
+
 
 export default ProductsScreen

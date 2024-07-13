@@ -4,23 +4,47 @@ import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import router from './routes/index'
+import store from './store';
+import App from './App';
+import HomeScreen from './Screens/HomeScreen';
 
 
 
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+/*const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <RouterProvider router = {router}/>
+   
+   <RouterProvider router = {router}>
+   <Provider store={store} 
+   
+   <App />
+  </Provider>
+  </RouterProvider>
    
   </React.StrictMode>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals();*/
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  
+  <RouterProvider router={router}>
+      <Provider store={store}>
+        <App />
+        <HomeScreen />
+      </Provider>
+      </RouterProvider>
+ 
+  
+);
+
 
